@@ -8,15 +8,15 @@ def path_dict_generator(path):
 
     for file in os.listdir(path):
         if file.endswith(".doc") or file.endswith(".docx"):
-            if file.startswith("ES ") or "_SPA" in file:
+            if file.startswith("ES ") or "_SPA" in file or "_ES_" in file:
                 copy_filepath_dict["ES"] = path + "/" + file
-            elif file.startswith("DE ") or "_GER" in file:
+            elif file.startswith("DE ") or "_GER" in file or "_DE_" in file:
                 copy_filepath_dict["DE"] = path + "/" + file
-            elif file.startswith("FR ") or "_FRE" in file:
+            elif file.startswith("FR ") or "_FRE" in file or "_FR_" in file:
                 copy_filepath_dict["FR"] = path + "/" + file
             elif file.startswith("BR ") or "_POR" in file or "_PTBR" in file:
                 copy_filepath_dict["BR"] = path + "/" + file
-            elif file.startswith("NL ") or "_NL" in file:
+            elif file.startswith("NL ") or "_NL" in file or "_NL_" in file:
                 copy_filepath_dict["NL"] = path + "/" + file
             else:
                 copy_filepath_dict["EN"] = path + "/" + file
@@ -90,8 +90,9 @@ def updating_language_dict(copy_language_dict):
 
 def print__output(updated_language_dict):
     message_list = []
-    for c in range(len(updated_language_dict["EN"])):
-        for i in range(len(updated_language_dict["EN"][c])):
+    first_key = list(updated_language_dict.keys())[0]
+    for c in range(len(updated_language_dict[first_key])):
+        for i in range(len(updated_language_dict[first_key][c])):
             message_fragments = []
             ## Edit here for additional langs
             if "ES" in updated_language_dict.keys():
