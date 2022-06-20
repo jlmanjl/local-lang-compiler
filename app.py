@@ -15,6 +15,7 @@ app.secret_key = b'thisissecret'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/', methods=['GET', 'POST'])
+@app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     for file in os.listdir(UPLOAD_FOLDER):
         os.remove('uploads/' + file)
