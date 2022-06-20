@@ -5,18 +5,26 @@ import docx
 def path_dict_generator(path):
 
     copy_filepath_dict = {}
+    
+    spanish_abr = ["_SPA", "_ES_", "ES "]
+    german_abr = ["_GER", "_DE_", "DE "]
+    french_abr = ["_FRE", "_FR_", "FR "]
+    brazport_abr = ["_POR", "_PTBR_", "BR "]
+    dutch_abr = ["_NL", "_NL_", "NL "]
+
 
     for file in os.listdir(path):
+        print(file)
         if file.endswith(".doc") or file.endswith(".docx"):
-            if file.startswith("ES ") or "_SPA" in file or "_ES_" in file:
+            if file.startswith("ES_") or "_SPA" in file or "_ES_" in file:
                 copy_filepath_dict["ES"] = path + "/" + file
-            elif file.startswith("DE ") or "_GER" in file or "_DE_" in file:
+            elif file.startswith("DE_") or "_GER" in file or "_DE_" in file:
                 copy_filepath_dict["DE"] = path + "/" + file
-            elif file.startswith("FR ") or "_FRE" in file or "_FR_" in file:
+            elif file.startswith("FR_") or "_FRE" in file or "_FR_" in file:
                 copy_filepath_dict["FR"] = path + "/" + file
-            elif file.startswith("BR ") or "_POR" in file or "_PTBR" in file:
+            elif file.startswith("BR_") or "_POR" in file or "_PTBR_" in file:
                 copy_filepath_dict["BR"] = path + "/" + file
-            elif file.startswith("NL ") or "_NL" in file or "_NL_" in file:
+            elif file.startswith("NL_") or "_NL" in file or "_NL_" in file:
                 copy_filepath_dict["NL"] = path + "/" + file
             else:
                 copy_filepath_dict["EN"] = path + "/" + file
@@ -91,44 +99,86 @@ def updating_language_dict(copy_language_dict):
 def print__output(updated_language_dict):
     message_list = []
     first_key = list(updated_language_dict.keys())[0]
-    for c in range(len(updated_language_dict[first_key])):
-        for i in range(len(updated_language_dict[first_key][c])):
-            message_fragments = []
-            ## Edit here for additional langs
-            if "ES" in updated_language_dict.keys():
-                ES = """{% when "es-ES","es","ES" %}<br>""" + updated_language_dict["ES"][c][i] + '\n'
-                message_fragments.append(ES)
-            else:
-                pass
-            if "FR" in updated_language_dict.keys():
-                FR = """{% when "fr-FR","fr","FR" %}<br>""" + updated_language_dict["FR"][c][i] + '\n'
-                message_fragments.append(FR)
-            else:
-                pass
-            if "DE" in updated_language_dict.keys():
-                DE = """{% when "de-DE","de","DE" %}<br>""" + updated_language_dict["DE"][c][i] + '\n'
-                message_fragments.append(DE)            
-            else:           
-                pass           
-            if "NL" in updated_language_dict.keys():           
-                NL = """{% when "nl-NL","nl","NL" %}<br>""" + updated_language_dict["NL"][c][i] + '\n'
-                message_fragments.append(NL)            
-            else:           
-                pass           
-            if "BR" in updated_language_dict.keys():           
-                BR = """{% when "pt-BR","br","BR" %}<br>""" + updated_language_dict["BR"][c][i] + '\n'
-                message_fragments.append(BR)           
-            else:
-                pass 
-            if "EN" in updated_language_dict.keys():
-                EN = """{% else %}<br>""" + updated_language_dict["EN"][c][i]
-                message_fragments.append(EN) 
-            else:
-                pass
+    try:
+        for c in range(len(updated_language_dict[first_key])):
+            for i in range(len(updated_language_dict[first_key][c])):
+                message_fragments = []
+                ## Edit here for additional langs
+                if "ES" in updated_language_dict.keys():
+                    ES = """{% when "es-ES","es","ES" %}<br>""" + updated_language_dict["ES"][c][i] + '\n'
+                    message_fragments.append(ES)
+                else:
+                    pass
+                if "FR" in updated_language_dict.keys():
+                    FR = """{% when "fr-FR","fr","FR" %}<br>""" + updated_language_dict["FR"][c][i] + '\n'
+                    message_fragments.append(FR)
+                else:
+                    pass
+                if "DE" in updated_language_dict.keys():
+                    DE = """{% when "de-DE","de","DE" %}<br>""" + updated_language_dict["DE"][c][i] + '\n'
+                    message_fragments.append(DE)            
+                else:           
+                    pass           
+                if "NL" in updated_language_dict.keys():           
+                    NL = """{% when "nl-NL","nl","NL" %}<br>""" + updated_language_dict["NL"][c][i] + '\n'
+                    message_fragments.append(NL)            
+                else:           
+                    pass           
+                if "BR" in updated_language_dict.keys():           
+                    BR = """{% when "pt-BR","br","BR" %}<br>""" + updated_language_dict["BR"][c][i] + '\n'
+                    message_fragments.append(BR)           
+                else:
+                    pass 
+                if "EN" in updated_language_dict.keys():
+                    EN = """{% else %}<br>""" + updated_language_dict["EN"][c][i]
+                    message_fragments.append(EN) 
+                else:
+                    pass
 
-            message = '<br>'.join(message_fragments)
+                message = '<br>'.join(message_fragments)
 
-            message_list.append(message)
+                message_list.append(message)
+    except IndexError:
+        for c in range(len(updated_language_dict["EN"])):
+            for i in range(len(updated_language_dict["EN"][c])):
+                message_fragments = []
+                ## Edit here for additional langs
+                if "ES" in updated_language_dict.keys():
+                    ES = """{% when "es-ES","es","ES" %}<br>""" + updated_language_dict["ES"][c][i] + '\n'
+                    message_fragments.append(ES)
+                else:
+                    pass
+                if "FR" in updated_language_dict.keys():
+                    FR = """{% when "fr-FR","fr","FR" %}<br>""" + updated_language_dict["FR"][c][i] + '\n'
+                    message_fragments.append(FR)
+                else:
+                    pass
+                if "DE" in updated_language_dict.keys():
+                    DE = """{% when "de-DE","de","DE" %}<br>""" + updated_language_dict["DE"][c][i] + '\n'
+                    message_fragments.append(DE)            
+                else:           
+                    pass           
+                if "NL" in updated_language_dict.keys():           
+                    NL = """{% when "nl-NL","nl","NL" %}<br>""" + updated_language_dict["NL"][c][i] + '\n'
+                    message_fragments.append(NL)            
+                else:           
+                    pass           
+                if "BR" in updated_language_dict.keys():           
+                    BR = """{% when "pt-BR","br","BR" %}<br>""" + updated_language_dict["BR"][c][i] + '\n'
+                    message_fragments.append(BR)           
+                else:
+                    pass 
+                if "EN" in updated_language_dict.keys():
+                    EN = """{% else %}<br>""" + updated_language_dict["EN"][c][i]
+                    message_fragments.append(EN) 
+                else:
+                    pass
+
+                message = '<br>'.join(message_fragments)
+
+                message_list.append(message)
+    except:
+        print("me no work")
 
     return message_list
 

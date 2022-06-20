@@ -18,7 +18,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     for file in os.listdir(UPLOAD_FOLDER):
-        os.remove('uploads/' + file)
+        if file.endswith(".doc") or file.endswith(".docx"):
+            os.remove('uploads/' + file)
 
     if request.method == 'POST':
         # check if the post request has the file part
