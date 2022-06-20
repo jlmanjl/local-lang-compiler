@@ -1,0 +1,18 @@
+{% extends "upload.html" %}
+
+{% block content %}
+<div>
+    {% for message in message_list %}
+    <div class="card mt-4" style="min-width: 50%;"> 
+        <div class="card-body p-4">
+            <p id="liquid-block">
+                {% autoescape false %}
+                {{ message }}
+                {% endautoescape %}
+            </p>   
+        </div>
+         
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
