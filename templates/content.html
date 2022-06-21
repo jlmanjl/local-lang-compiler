@@ -1,20 +1,22 @@
 {% extends "upload.html" %}
 
 {% block content %}
-<div mt-4>
-    <a href="upload"><button type="button" class="btn btn-primary">Another!</button></a>
-</div>
 <div>
-    {% for message in message_list %}
-    <div class="card mt-4" style="min-width: 50%;"> 
-        <div class="card-body p-4">
-            <p id="liquid-block">
+    <a href="/"><button type="button" class="button">Another!</button></a>
+</div>
+<div class="cards-container">
+    {% for count, message in message_list %}
+    <div class="card" style="min-width: 50%;"> 
+        <div class="card-container">
+            <p id="liquid-block-{{ count }}" class="codeblock">
                 {% autoescape false %}
                 {{ message }}
                 {% endautoescape %}
-            </p>   
+            </p>  
+            <button type="button" class="button" data-clipboard-target="#liquid-block-{{ count }}">Copy</button>
         </div>
     </div>
     {% endfor %}
 </div>
 {% endblock %}
+

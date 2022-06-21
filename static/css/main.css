@@ -1,0 +1,49 @@
+* {
+    font-size: 18px;
+}
+
+.custom-container {
+    margin-top: 75px;
+    margin-bottom: 75px;
+}
+
+.cards-container {
+    padding-top: 20px;
+}
+
+.input-group {
+    border-radius: 8px;
+    background-color: #F3F6FB;
+    max-width: 75%;
+    padding: 8px;
+    height: 60px;
+    line-height: 60px;
+}
+
+.card {
+/* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-top: 24px; 
+    border-radius: 8px;
+    background-color: #F3F6FB;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.card-container {
+    padding: 24px 24px;
+}
+
+.codeblock {
+    font-family: monospace;
+    font-size: 16px;
+}
+
+.file-item {
+    font-family: monospace;
+    font-size: 14px;
+}

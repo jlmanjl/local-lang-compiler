@@ -14,9 +14,10 @@ app = Flask(__name__)
 app.secret_key = b'thisissecret'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
+    files = []
     for file in os.listdir(UPLOAD_FOLDER):
         if file.endswith(".doc") or file.endswith(".docx"):
             os.remove('uploads/' + file)
@@ -37,14 +38,14 @@ def upload_file():
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    return render_template('upload.html')
+    return render_template('upload.html', files=files)
 
 @app.route('/compiled')
 def langcompiled():
     filelist = path_dict_generator(UPLOAD_FOLDER)
     copylangdict = copy_lang_dict_generator(filelist)
     updatedlangdict = updating_language_dict(copylangdict)
-    message_list = print__output(updatedlangdict)
+    message_list = print_output(updatedlangdict)
 
     return render_template('content.html', message_list=message_list)
 

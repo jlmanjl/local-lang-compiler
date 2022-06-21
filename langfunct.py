@@ -96,7 +96,7 @@ def updating_language_dict(copy_language_dict):
         print("success for " + key)
     return updated_language_dict
 
-def print__output(updated_language_dict):
+def print_output(updated_language_dict):
     message_list = []
     first_key = list(updated_language_dict.keys())[0]
     try:
@@ -105,32 +105,32 @@ def print__output(updated_language_dict):
                 message_fragments = []
                 ## Edit here for additional langs
                 if "ES" in updated_language_dict.keys():
-                    ES = """{% when "es-ES","es","ES" %}<br>""" + updated_language_dict["ES"][c][i] + '\n'
+                    ES = """<b>{% when "es-ES","es","ES" %}</b><br>""" + updated_language_dict["ES"][c][i] + '\n'
                     message_fragments.append(ES)
                 else:
                     pass
                 if "FR" in updated_language_dict.keys():
-                    FR = """{% when "fr-FR","fr","FR" %}<br>""" + updated_language_dict["FR"][c][i] + '\n'
+                    FR = """<b>{% when "fr-FR","fr","FR" %}</b><br>""" + updated_language_dict["FR"][c][i] + '\n'
                     message_fragments.append(FR)
                 else:
                     pass
                 if "DE" in updated_language_dict.keys():
-                    DE = """{% when "de-DE","de","DE" %}<br>""" + updated_language_dict["DE"][c][i] + '\n'
+                    DE = """<b>{% when "de-DE","de","DE" %}</b><br>""" + updated_language_dict["DE"][c][i] + '\n'
                     message_fragments.append(DE)            
                 else:           
                     pass           
                 if "NL" in updated_language_dict.keys():           
-                    NL = """{% when "nl-NL","nl","NL" %}<br>""" + updated_language_dict["NL"][c][i] + '\n'
+                    NL = """<b>{% when "nl-NL","nl","NL" %}</b><br>""" + updated_language_dict["NL"][c][i] + '\n'
                     message_fragments.append(NL)            
                 else:           
                     pass           
                 if "BR" in updated_language_dict.keys():           
-                    BR = """{% when "pt-BR","br","BR" %}<br>""" + updated_language_dict["BR"][c][i] + '\n'
+                    BR = """<b>{% when "pt-BR","br","BR" %}</b><br>""" + updated_language_dict["BR"][c][i] + '\n'
                     message_fragments.append(BR)           
                 else:
                     pass 
                 if "EN" in updated_language_dict.keys():
-                    EN = """{% else %}<br>""" + updated_language_dict["EN"][c][i]
+                    EN = """<b>{% else %}</b><br>""" + updated_language_dict["EN"][c][i]
                     message_fragments.append(EN) 
                 else:
                     pass
@@ -144,32 +144,32 @@ def print__output(updated_language_dict):
                 message_fragments = []
                 ## Edit here for additional langs
                 if "ES" in updated_language_dict.keys():
-                    ES = """{% when "es-ES","es","ES" %}<br>""" + updated_language_dict["ES"][c][i] + '\n'
+                    ES = """<b>{% when "es-ES","es","ES" %}</b><br>""" + updated_language_dict["ES"][c][i] + '\n'
                     message_fragments.append(ES)
                 else:
                     pass
                 if "FR" in updated_language_dict.keys():
-                    FR = """{% when "fr-FR","fr","FR" %}<br>""" + updated_language_dict["FR"][c][i] + '\n'
+                    FR = """<b>{% when "fr-FR","fr","FR" %}</b><br>""" + updated_language_dict["FR"][c][i] + '\n'
                     message_fragments.append(FR)
                 else:
                     pass
                 if "DE" in updated_language_dict.keys():
-                    DE = """{% when "de-DE","de","DE" %}<br>""" + updated_language_dict["DE"][c][i] + '\n'
+                    DE = """<b>{% when "de-DE","de","DE" %}</b><br>""" + updated_language_dict["DE"][c][i] + '\n'
                     message_fragments.append(DE)            
                 else:           
                     pass           
                 if "NL" in updated_language_dict.keys():           
-                    NL = """{% when "nl-NL","nl","NL" %}<br>""" + updated_language_dict["NL"][c][i] + '\n'
+                    NL = """<b>{% when "nl-NL","nl","NL" %}<br>""" + updated_language_dict["NL"][c][i] + '\n'
                     message_fragments.append(NL)            
                 else:           
                     pass           
                 if "BR" in updated_language_dict.keys():           
-                    BR = """{% when "pt-BR","br","BR" %}<br>""" + updated_language_dict["BR"][c][i] + '\n'
+                    BR = """<b>{% when "pt-BR","br","BR" %}</b><br>""" + updated_language_dict["BR"][c][i] + '\n'
                     message_fragments.append(BR)           
                 else:
                     pass 
                 if "EN" in updated_language_dict.keys():
-                    EN = """{% else %}<br>""" + updated_language_dict["EN"][c][i]
+                    EN = """<b>{% else %}</b><br>""" + updated_language_dict["EN"][c][i]
                     message_fragments.append(EN) 
                 else:
                     pass
@@ -179,6 +179,12 @@ def print__output(updated_language_dict):
                 message_list.append(message)
     except:
         print("me no work")
+    print(enumerate(message_list))
+    return enumerate(message_list)
+    
 
-    return message_list
+def identifiers(message_list):
+    elem_ids = [*range(0, len(message_list), 1)]
+    print(elem_ids)
+    return elem_ids
 
