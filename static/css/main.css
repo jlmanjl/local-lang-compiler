@@ -1,5 +1,19 @@
+@font-face {
+    font-family: 'Mont';
+    font-style: normal;
+    src: url('https://safetyculture.com/wp-content/themes/safetyculture/src/fonts/Mont-Bold.woff') format('woff');
+  }
+
 * {
-    font-size: 18px;
+    font-size: 16px;
+}
+
+h1 {
+    color: #293745;
+    font-family: Mont,Roboto,Helvetica,sans-serif!important;
+}
+p {
+    color: #293745;
 }
 
 .custom-container {
@@ -46,4 +60,13 @@
 .file-item {
     font-family: monospace;
     font-size: 14px;
+}
+
+.button {
+    vertical-align: baseline;
+}
+
+.copy-icon {
+    vertical-align: baseline;
+    height: 16px;
 }
