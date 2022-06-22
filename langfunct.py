@@ -5,26 +5,37 @@ import docx
 def path_dict_generator(path):
 
     copy_filepath_dict = {}
-    
-    spanish_abr = ["_SPA", "_ES_", "ES "]
-    german_abr = ["_GER", "_DE_", "DE "]
-    french_abr = ["_FRE", "_FR_", "FR "]
-    brazport_abr = ["_POR", "_PTBR_", "BR "]
-    dutch_abr = ["_NL", "_NL_", "NL "]
 
+    # for file in os.listdir(path):
+    #     print(file)
+    #     if file.endswith(".doc") or file.endswith(".docx"):
+    #         if file.startswith("ES_") or "_SPA" in file or "_ES_" in file:
+    #             copy_filepath_dict["ES"] = path + "/" + file
+    #         elif file.startswith("DE_") or "_GER" in file or "_DE_" in file:
+    #             copy_filepath_dict["DE"] = path + "/" + file
+    #         elif file.startswith("FR_") or "_FRE" in file or "_FR_" in file:
+    #             copy_filepath_dict["FR"] = path + "/" + file
+    #         elif file.startswith("BR_") or "_POR" in file or "_PTBR_" in file or "PT" in file or "BR" in file:
+    #             copy_filepath_dict["BR"] = path + "/" + file
+    #         elif file.startswith("NL_") or "_NL" in file or "_NL_" in file:
+    #             copy_filepath_dict["NL"] = path + "/" + file
+    #         else:
+    #             copy_filepath_dict["EN"] = path + "/" + file
+    #     else:
+    #         continue
 
     for file in os.listdir(path):
         print(file)
         if file.endswith(".doc") or file.endswith(".docx"):
-            if file.startswith("ES_") or "_SPA" in file or "_ES_" in file:
+            if file.startswith("ES") or "SPA" in file or "ES" in file:
                 copy_filepath_dict["ES"] = path + "/" + file
-            elif file.startswith("DE_") or "_GER" in file or "_DE_" in file:
+            elif file.startswith("DE") or "GER" in file or "DE" in file:
                 copy_filepath_dict["DE"] = path + "/" + file
-            elif file.startswith("FR_") or "_FRE" in file or "_FR_" in file:
+            elif file.startswith("FR") or "FRE" in file or "FR" in file:
                 copy_filepath_dict["FR"] = path + "/" + file
-            elif file.startswith("BR_") or "_POR" in file or "_PTBR_" in file:
+            elif file.startswith("BR") or "POR" in file or "PTBR" in file or "PT" in file or "BR" in file:
                 copy_filepath_dict["BR"] = path + "/" + file
-            elif file.startswith("NL_") or "_NL" in file or "_NL_" in file:
+            elif file.startswith("NL") or "NL" in file:
                 copy_filepath_dict["NL"] = path + "/" + file
             else:
                 copy_filepath_dict["EN"] = path + "/" + file
@@ -104,6 +115,7 @@ def print_output(updated_language_dict):
             for i in range(len(updated_language_dict[first_key][c])):
                 message_fragments = []
                 ## Edit here for additional langs
+                message_fragments.append("{% case lang %}" + '\n') 
                 if "ES" in updated_language_dict.keys():
                     ES = """<b>{% when "es-ES","es","ES" %}</b><br>""" + updated_language_dict["ES"][c][i] + '\n'
                     message_fragments.append(ES)
@@ -134,6 +146,7 @@ def print_output(updated_language_dict):
                     message_fragments.append(EN) 
                 else:
                     pass
+                message_fragments.append("{% endcase %}")
 
                 message = '<br>'.join(message_fragments)
 
@@ -143,6 +156,7 @@ def print_output(updated_language_dict):
             for i in range(len(updated_language_dict["EN"][c])):
                 message_fragments = []
                 ## Edit here for additional langs
+                message_fragments.append("{% case lang %}" + '\n')
                 if "ES" in updated_language_dict.keys():
                     ES = """<b>{% when "es-ES","es","ES" %}</b><br>""" + updated_language_dict["ES"][c][i] + '\n'
                     message_fragments.append(ES)
@@ -173,6 +187,7 @@ def print_output(updated_language_dict):
                     message_fragments.append(EN) 
                 else:
                     pass
+                message_fragments.append("{% endcase %}")
 
                 message = '<br>'.join(message_fragments)
 
